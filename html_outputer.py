@@ -1,3 +1,4 @@
+#coding:utf-8
 class HtmlOutputer(object):
 	def __init__(self):
 		self.datas = []
@@ -8,7 +9,8 @@ class HtmlOutputer(object):
 		self.datas.append(data)
 
 	def output_html(self):
-		fout = open('output.html', 'w')
+		#在windows下新文件的默认编码是gbk，需手动改为utf-8
+		fout = open('output.html', 'w',encoding = 'utf-8')
 
 		fout.write("<html>")
 		fout.write("<body>")
@@ -18,7 +20,7 @@ class HtmlOutputer(object):
 			fout.write("<tr>")
 			fout.write("<td>%s</td>" % data['url'])
 			fout.write("<td>%s</td>" % data['title'].encode('utf-8'))
-			fout.write("<td>%s</td>" % data['summary'])
+			fout.write("<td>%s</td>" % data['summary'].encode('utf-8'))
 			fout.write("</tr>")
 
 		fout.write("</table>")

@@ -1,10 +1,12 @@
+#coding:utf-8
 from bs4 import BeautifulSoup
+
 import urllib.parse
 import re
 
 class HtmlParser(object):
 
-	def _get_new_urls(page_url,soup):
+	def _get_new_urls(self,page_url,soup):
 		new_urls = set()
 		# /view/123.htm
 		links = soup.find_all('a', href=re.compile(r"/item/"))
@@ -15,7 +17,7 @@ class HtmlParser(object):
 		return new_urls
 
 
-	def _get_new_data(page_url,soup):
+	def _get_new_data(self,page_url,soup):
 		res_data = {}
 
 		#url
@@ -23,10 +25,14 @@ class HtmlParser(object):
 
 		#<dd class="lemmaWgt-lemmaTitle-title"><h1>Python</h1>
 		title_node = soup.find('dd',class_="lemmaWgt-lemmaTitle-title").find('h1')
+		if title_node is None:
+			res_data['title'] = "目标为空"
 		res_data['title'] = title_node.get_text()
 
 		#<div class="lemma-summary" label-module="lemmaSummary">
 		summary_node = soup.find('div',class_="lemma-summary")
+		if summary_node is None:
+			res_data['summary'] = "目标为空"
 		res_data['summary'] = summary_node.get_text()
 
 		return res_data

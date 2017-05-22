@@ -1,4 +1,6 @@
-import urllib
+#coding:utf-8
+import urllib.request
+
 class Html_Downloader(object):
 	def download(self, url):
 		if url is None:
