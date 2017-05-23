@@ -1,4 +1,3 @@
-#coding:utf-8
 import urllib.request
 
 class Html_Downloader(object):

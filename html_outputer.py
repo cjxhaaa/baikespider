@@ -1,4 +1,3 @@
-#coding:utf-8
 class HtmlOutputer(object):
 	def __init__(self):
 		self.datas = []
@@ -9,9 +8,9 @@ class HtmlOutputer(object):
 		self.datas.append(data)
 
 	def output_html(self):
-		#在windows下新文件的默认编码是gbk，需手动改为utf-8
-		fout = open('output.html', 'w',encoding = 'utf-8')
-
+		#在windows下新文件的默认编码需手动改为utf-8
+		fout = open('output.html','w',encoding='utf-8')
+		fout.write("<!DOCTYPE html>")
 		fout.write("<html>")
 		fout.write("<body>")
 		fout.write("<table>")
@@ -19,8 +18,8 @@ class HtmlOutputer(object):
 		for data in self.datas:
 			fout.write("<tr>")
 			fout.write("<td>%s</td>" % data['url'])
-			fout.write("<td>%s</td>" % data['title'].encode('utf-8'))
-			fout.write("<td>%s</td>" % data['summary'].encode('utf-8'))
+			fout.write("<td>%s</td>" % data['title'])
+			fout.write("<td>%s</td>" % data['summary'])
 			fout.write("</tr>")
 
 		fout.write("</table>")

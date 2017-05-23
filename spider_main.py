@@ -1,4 +1,3 @@
-#coding:utf-8
 import html_downloader
 import html_outputer
 import html_parser
@@ -30,7 +29,7 @@ class SpiderMain(object):
 				#收集数据              
 				self.outputer.collect_data(new_data)           
 
-				if count == 100:
+				if count == 10:
 					break
 				count = count + 1
 			except Exception as e:

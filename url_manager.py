@@ -1,4 +1,3 @@
-#coding:utf-8
 class UrlManager():
 	def __init__(self):
 		self.new_urls = set()
